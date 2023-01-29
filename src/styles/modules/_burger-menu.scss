@@ -1,0 +1,47 @@
+.menu-button {
+  display: block;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: black;
+}
+
+.menu-button.active .bar:nth-child(2) {
+  transform: translateX(30px);
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+}
+.menu-button .bar:nth-child(2) {
+  transform: translateX(0px);
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+}
+.menu-button.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  transition: 0.3s ease-in-out;
+}
+.menu-button .bar:nth-child(1) {
+  transform: translateY(0px) rotate(0deg);
+  transition: 0.3s ease-in-out;
+}
+.menu-button.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  transition: 0.3s ease-in-out;
+}
+.menu-button .bar:nth-child(3) {
+  transform: translateY(0px) rotate(0deg);
+  transition: 0.3s ease-in-out;
+}
+@media (min-width: 769px) {
+  .menu-button {
+    display: none;
+    // overflow: hidden;
+  }
+}

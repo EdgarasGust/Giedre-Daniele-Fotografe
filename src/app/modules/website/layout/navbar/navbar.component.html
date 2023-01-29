@@ -1,0 +1,51 @@
+<nav class="navbar-expand-md navbar-position">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="logo-button-div">
+        <div class="logo">
+          <img
+            class="logo-image"
+            src="assets/logo/logo.JPG"
+            alt="logo"
+            width="50"
+            height="70"
+          />
+        </div>
+        <div>
+          <button
+            class="menu-button"
+            [ngClass]="{ active: isMenuCollapsed === true }"
+            type="button"
+            title="burger-menu"
+            (click)="isMenuCollapsed = !isMenuCollapsed"
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+      <div [ngbCollapse]="!isMenuCollapsed" class="collapsed navbar-collapse">
+        <ul class="navbar-list">
+          <li class="">
+            <a routerLink="/" (click)="isMenuCollapsed = false">PRADŽIA</a>
+          </li>
+          <li>
+            <a routerLink="/about" (click)="isMenuCollapsed = false"
+              >APIE MANE</a
+            >
+          </li>
+          <li>
+            <a routerLink="" (click)="isMenuCollapsed = false"> PORTFOLIO</a>
+          </li>
+          <li>
+            <a routerLink="/contacts" (click)="isMenuCollapsed = false">
+              KONTAKTAI</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div *ngIf="isMenuCollapsed" class="backdrop"></div>
