@@ -6,26 +6,58 @@ $text-color: #4b4e53;
   box-sizing: border-box;
 }
 
-body,
 h1,
 h2,
 h3,
 h4,
 p {
   margin: 0;
-  color: $text-color;
+  // color: $text-color;
 }
 
+html,
 body {
-  min-height: 100vh;
-  font-family: "Times New Roman", Sans-serif;
-
-  // text-rendering: optimizeSpeed;
-  // line-height: 1.5;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// img,
-// picture {
-//   max-width: 100%;
-//   display: block;
-// }
+a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: $text-color;
+  letter-spacing: 3px;
+
+  &:hover {
+    color: cadetblue;
+  }
+}
+
+.link-active {
+  color: cadetblue;
+}
+// Header and footer link underline
+@media screen and (min-width: 576px) {
+  .underline {
+    position: relative;
+  }
+
+  .underline::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -2%;
+    width: 0%;
+    height: 1px;
+    background-color: lightgrey;
+    opacity: 0;
+    transition: opacity 300ms, width 600ms;
+  }
+
+  .underline:hover::after {
+    opacity: 1;
+    width: 100%;
+  }
+}
