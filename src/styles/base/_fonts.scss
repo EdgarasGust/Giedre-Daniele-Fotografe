@@ -1,4 +1,5 @@
 $text-color: #4b4e53;
+// $font-family: "Open Sans", sans-serif;
 
 *,
 *::before,
@@ -11,7 +12,6 @@ h2,
 h3,
 h4,
 p {
-  margin: 0;
   // color: $text-color;
 }
 
@@ -21,14 +21,13 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 a {
   text-decoration: none;
   font-size: 0.8rem;
   color: $text-color;
-  letter-spacing: 3px;
+  // letter-spacing: 2px;
 
   &:hover {
     color: cadetblue;
