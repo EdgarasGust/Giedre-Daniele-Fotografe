@@ -1,0 +1,11 @@
+@use "../../../styles/base/global";
+
+.backdrop-image {
+  padding: 3em;
+  width: 40%;
+  height: auto;
+  max-width: 800px;
+  background-color: global.$primary;
+  border-radius: 20px;
+  color: black;
+}

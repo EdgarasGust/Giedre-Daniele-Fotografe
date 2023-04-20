@@ -1,0 +1,21 @@
+<!-- <div class="container">
+  <button class="btn btn-primary" (click)="getImageById('prev')">Prev</button>
+  <button class="btn btn-primary" (click)="getImageById('next')">Next</button>
+  <img [src]="imageToDisplay.src" alt="" class="slide-animation" />
+</div> -->
+
+<!-- //////////////////// -->
+
+<div class="background">
+  <div class="close-button" (click)="close()">&times;</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let image of imagesArray">
+        <img [src]="image.src" alt="" loading="lazy" />
+        <div class="swiper-lazy-preloader"></div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

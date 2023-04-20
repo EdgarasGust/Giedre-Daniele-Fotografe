@@ -1,0 +1,138 @@
+<nav class="navbar-expand-md navbar-position">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="logo-button-div">
+        <div class="logo">
+          <img
+            class="logo-image"
+            src="assets/logo/logo.JPG"
+            alt="logo"
+            width="50"
+            height="70"
+          />
+        </div>
+        <div>
+          <button
+            class="menu-button"
+            [ngClass]="{ active: isMenuCollapsed === true }"
+            type="button"
+            title="burger-menu"
+            (click)="isMenuCollapsed = !isMenuCollapsed"
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+      <div [ngbCollapse]="!isMenuCollapsed" class="collapsed navbar-collapse">
+        <ul class="navbar-list">
+          <li class="underline">
+            <a
+              routerLink="/"
+              routerLinkActive="link-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="isMenuCollapsed = false"
+              >PRADŽIA</a
+            >
+          </li>
+          <li class="underline">
+            <a
+              routerLink="/apie"
+              routerLinkActive="link-active"
+              (click)="isMenuCollapsed = false"
+              >APIE MANE</a
+            >
+          </li>
+
+          <li
+            class="underline"
+            #myDrop="ngbDropdown"
+            ngbDropdown
+            *ngIf="!mobileContainer"
+          >
+            <a
+              class="portfolio-link"
+              routerLinkActive="link-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              ngbDropdownToggle
+            >
+              PORTFOLIO
+              <i [ngClass]="myDrop.isOpen() ? 'arrow down' : 'arrow up'"></i>
+            </a>
+            <div ngbDropdownMenu>
+              <div>
+                <a
+                  class="underline"
+                  ngbDropdownItem
+                  [routerLink]="['/portfolio', vestuves]"
+                  >Vestuvės</a
+                >
+                <a
+                  class="underline"
+                  ngbDropdownItem
+                  [routerLink]="['/portfolio', ivairios]"
+                  >Įvairios</a
+                >
+              </div>
+            </div>
+          </li>
+
+          <!-- Mobile container -->
+
+          <li class="nav-item" *ngIf="mobileContainer">
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="link-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              role="button"
+              (click)="collapse.toggle()"
+              [attr.aria-expanded]="isSecondaryMenuCollapsed"
+              aria-controls="collapseExample"
+            >
+              PORTFOLIO
+              <i
+                [ngClass]="
+                  !isSecondaryMenuCollapsed ? 'arrow up' : 'arrow down'
+                "
+              ></i>
+            </a>
+            <div
+              #collapse="ngbCollapse"
+              [(ngbCollapse)]="isSecondaryMenuCollapsed"
+            >
+              <div class="navbar-nav d-flex flex-column text-center">
+                <a
+                  class="nav-link"
+                  [routerLink]="['/portfolio', vestuves]"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  >Vestuvės</a
+                >
+                <a
+                  class="nav-link"
+                  [routerLink]="['/portfolio', ivairios]"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  >Įvairios</a
+                >
+              </div>
+            </div>
+          </li>
+
+          <li class="underline">
+            <a
+              routerLink="/kontaktai"
+              routerLinkActive="link-active"
+              (click)="isMenuCollapsed = false"
+            >
+              KONTAKTAI</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div *ngIf="isMenuCollapsed" class="backdrop"></div>

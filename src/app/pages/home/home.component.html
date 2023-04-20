@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="image-row-div">
+    <div class="image-div" *ngFor="let image of images">
+      <img [src]="image.image" alt="" width="350" height="520" />
+      <div class="image-text">
+        <h5 class="m-0">{{ image.imageName }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

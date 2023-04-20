@@ -1,0 +1,147 @@
+<div class="container-fluid">
+  <div class="background"></div>
+</div>
+<div>
+  <h2 class="text-center mt-5">Kontaktai</h2>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mt-5">
+      <p><b> Giedrės Danielės Foto Studija</b></p>
+      <p>Telefonas: <a href="tel:+37060493431"> +37060493431</a></p>
+      <p>
+        El. paštas:<a href="mailto:info@giedredanielefotografe.lt">
+          info@giedredanielefotografe.lt
+        </a>
+      </p>
+      <br />
+      <br />
+      <p>
+        Ar norite gauti daugiau informacijos apie mano paslaugas? Prašau,
+        klauskite manęs tiesiogiai arba naudokite kontaktų formą.
+      </p>
+      <p>
+        Aš gerbiu jūsų privatumą ir niekada nesidalinu jūsų asmeniniais
+        duomenimis.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <hr class="hidden" />
+      <form
+        class="contact-form"
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="mt-3">
+          <label for="name" class="form-label">Vardas*</label>
+          <input
+            type="text"
+            class="form-control"
+            [ngClass]="{
+              'error-border':
+                contactForm.controls['name'].touched &&
+                contactForm.controls['name'].invalid
+            }"
+            minlength="2"
+            formControlName="name"
+          />
+          <span
+            class="error-message"
+            *ngIf="
+              contactForm.controls['name'].touched &&
+              contactForm.controls['name'].invalid
+            "
+            >Įrasykite savo vardą</span
+          >
+        </div>
+        <div class="mt-3">
+          <label for="email" class="form-label">El. paštas*</label>
+          <input
+            type="email"
+            class="form-control"
+            [ngClass]="{
+              'error-border':
+                contactForm.controls['email'].touched &&
+                contactForm.controls['email'].invalid
+            }"
+            email
+            formControlName="email"
+          />
+          <span
+            class="error-message"
+            *ngIf="
+              contactForm.controls['email'].touched &&
+              contactForm.controls['email'].invalid
+            "
+            >Įrasykite savo elektroninio pašto adresą</span
+          >
+        </div>
+        <div class="mt-3">
+          <label for="tel" class="form-label">Telefono numeris</label>
+          <input type="number" class="form-control" formControlName="tel" />
+        </div>
+        <div class="mt-3">
+          <label for="message" class="form-label">Žinutė*</label>
+          <textarea
+            name="message"
+            class="form-control"
+            [ngClass]="{
+              'error-border':
+                contactForm.controls['message'].touched &&
+                contactForm.controls['message'].invalid
+            }"
+            formControlName="message"
+            id="message"
+            minlength="5"
+            cols="30"
+            rows="4"
+          ></textarea>
+          <span
+            class="error-message"
+            *ngIf="
+              contactForm.controls['message'].touched &&
+              contactForm.controls['message'].invalid
+            "
+            >Įrasykite klausimą</span
+          >
+        </div>
+        <div class="form-check mt-3">
+          <input
+            class="form-check-input"
+            required
+            formControlName="termsConditions"
+            type="checkbox"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            <a
+              href="../../../assets/terms/Giedrė Danielė Fotografė - Privatumo politika.pdf"
+              target="blank"
+              >Sutinku su Asmens duomenų tvarkymo taisyklėmis.</a
+            >
+          </label>
+        </div>
+
+        <mat-spinner
+          class="mx-auto"
+          color="warn"
+          *ngIf="isLoading"
+          [diameter]="40"
+        ></mat-spinner>
+        <button
+          mat-raised-button
+          color="primary"
+          class="my-4 form-control"
+          type="submit"
+          [disabled]="!contactForm.valid"
+        >
+          Siųsti
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-thank-you
+  [message]="message"
+  (close)="formSubmitted = $event"
+  *ngIf="formSubmitted"
+></app-thank-you>

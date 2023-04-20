@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="column">
+    <div class="image-div" *ngFor="let image of images">
+      <a [routerLink]="['name', image.name]">
+        <img [src]="image.src" alt="" class="" />
+      </a>
+    </div>
+  </div>
+</div>
