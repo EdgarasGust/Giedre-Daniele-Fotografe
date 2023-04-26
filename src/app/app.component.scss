@@ -7,3 +7,14 @@
 .router-outlet-div {
   flex: 1;
 }
+
+.mobile-margin {
+  margin-top: 3.7em;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 769px) {
+  .mobile-margin {
+    margin-top: 0;
+  }
+}

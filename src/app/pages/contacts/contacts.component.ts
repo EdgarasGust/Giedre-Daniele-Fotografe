@@ -11,6 +11,7 @@ export class ContactsComponent {
   formSubmitted = false;
   isLoading = false;
   message = '';
+  name = '';
 
   contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -29,22 +30,26 @@ export class ContactsComponent {
       this.contactForm.reset();
       return;
     } else {
-      this.isLoading = true;
-      this.emailService.sendMail(this.contactForm.value).subscribe({
-        next: () => {
-          this.formSubmitted = true;
-          this.isLoading = false;
-          this.message = `Ačių ${this.contactForm.controls.name.value} už Jūsų laišką. Į Jūsų klausimus atsakysime, kaip galėdami greičiau!`;
-        },
-        error: (err) => {
-          this.formSubmitted = true;
-          this.isLoading = false;
-          console.error(err);
-          this.message = 'Atsiprašome įvyko klaida. Bandykite dar kartą.';
-        },
-      });
-
+      this.name = this.contactForm.value.name ?? '';
+      this.sendEmail();
       this.contactForm.reset();
     }
+  }
+
+  sendEmail() {
+    this.isLoading = true;
+    this.emailService.sendMail(this.contactForm.value).subscribe({
+      next: () => {
+        this.formSubmitted = true;
+        this.isLoading = false;
+        this.message = `Ačių ${this.contactForm.controls.name.value} už Jūsų laišką. Į Jūsų klausimus atsakysime, kaip galėdami greičiau!`;
+      },
+      error: (err) => {
+        this.formSubmitted = true;
+        this.isLoading = false;
+        console.error(err);
+        this.message = 'Atsiprašome įvyko klaida. Bandykite dar kartą.';
+      },
+    });
   }
 }

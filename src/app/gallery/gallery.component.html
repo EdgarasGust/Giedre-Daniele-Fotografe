@@ -1,9 +1,11 @@
 <div class="container">
-  <div class="column">
-    <div class="image-div" *ngFor="let image of images">
-      <a [routerLink]="['name', image.name]">
-        <img [src]="image.src" alt="" class="" />
-      </a>
-    </div>
+  <h2 class="text-center">Nuotraukų Galerija</h2>
+  <div class="card-container" *ngFor="let image of portfolioImages">
+    <a [routerLink]="['name', image.name]">
+      <img [src]="image.src" alt="" class="" />
+      <div class="image-overlay">
+        <p class="image-overlay-text m-0">{{ image.name }}</p>
+      </div>
+    </a>
   </div>
 </div>

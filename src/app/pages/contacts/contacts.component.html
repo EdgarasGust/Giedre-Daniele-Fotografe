@@ -1,17 +1,15 @@
-<div class="container-fluid">
-  <div class="background"></div>
-</div>
+<div class="background"></div>
 <div>
   <h2 class="text-center mt-5">Kontaktai</h2>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-md-6 mt-5">
-      <p><b> Giedrės Danielės Foto Studija</b></p>
+      <p><b> Giedrės Danielės Photography</b></p>
       <p>Telefonas: <a href="tel:+37060493431"> +37060493431</a></p>
       <p>
-        El. paštas:<a href="mailto:info@giedredanielefotografe.lt">
-          info@giedredanielefotografe.lt
+        El. paštas:<a href="mailto:info@giedredanielephotography.lt">
+          info@giedredanielephotography.lt
         </a>
       </p>
       <br />
@@ -141,6 +139,7 @@
   </div>
 </div>
 <app-thank-you
+  [name]="name"
   [message]="message"
   (close)="formSubmitted = $event"
   *ngIf="formSubmitted"

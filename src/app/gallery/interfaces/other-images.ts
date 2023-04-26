@@ -49,33 +49,65 @@ export const Gytis = [
   { src: '../../../../assets/gallery/weddings/5.webp', id: 6 },
   { src: '../../../../assets/gallery/weddings/7.webp', id: 7 },
 ];
-// export const Goda = [
-//   '../../../../../assets/gallery/weddings/main.webp',
-//   '../../../../assets/gallery/weddings/1.webp',
-//   '../../../../assets/gallery/weddings/2.webp',
-//   '../../../../assets/gallery/weddings/3.webp',
-//   '../../../../assets/gallery/weddings/4.webp',
-//   '../../../../assets/gallery/weddings/5.webp',
-//   '../../../../assets/gallery/weddings/6.webp',
-//   '../../../../assets/gallery/weddings/7.webp',
-// ];
-// export const Antanas = [
-//   '../../../../../assets/gallery/weddings/main.webp',
-//   '../../../../assets/gallery/weddings/2.webp',
-//   '../../../../assets/gallery/weddings/6.webp',
-//   '../../../../assets/gallery/weddings/3.webp',
-//   '../../../../assets/gallery/weddings/4.webp',
-//   '../../../../assets/gallery/weddings/5.webp',
-//   '../../../../assets/gallery/weddings/1.webp',
-//   '../../../../assets/gallery/weddings/7.webp',
-// ];
-// export const Gytis = [
-//   '../../../../assets/gallery/weddings/7.webp',
-//   '../../../../../assets/gallery/weddings/main.webp',
-//   '../../../../assets/gallery/weddings/2.webp',
-//   '../../../../assets/gallery/weddings/6.webp',
-//   '../../../../assets/gallery/weddings/3.webp',
-//   '../../../../assets/gallery/weddings/4.webp',
-//   '../../../../assets/gallery/weddings/1.webp',
-//   '../../../../assets/gallery/weddings/5.webp',
-// ];
+
+export const Asmeninės = [
+  { src: '../../../../assets/gallery/asmenine/asmenine-01.webp', id: 1 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-02.webp', id: 2 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-03.webp', id: 3 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-04.webp', id: 4 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-05.webp', id: 5 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-06.webp', id: 6 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-07.webp', id: 7 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-08.webp', id: 8 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-09.webp', id: 9 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-10.webp', id: 10 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-11.webp', id: 11 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-12.webp', id: 12 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-13.webp', id: 13 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-14.webp', id: 14 },
+  { src: '../../../../assets/gallery/asmenine/asmenine-15.webp', id: 15 },
+];
+
+export const Ivaizdis = [
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-01.webp', id: 1 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-02.webp', id: 2 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-03.webp', id: 3 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-04.webp', id: 4 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-05.webp', id: 5 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-06.webp', id: 6 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-07.webp', id: 7 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-08.webp', id: 8 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-09.webp', id: 9 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-10.webp', id: 10 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-11.webp', id: 11 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-12.webp', id: 12 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-13.webp', id: 13 },
+  { src: '../../../../assets/gallery/ivaizdzio/ivaizdzio-14.webp', id: 14 },
+];
+
+export const Sventes = [
+  { src: '../../../../assets/gallery/sventes/sventes-01.webp', id: 1 },
+  { src: '../../../../assets/gallery/sventes/sventes-05.webp', id: 5 },
+  { src: '../../../../assets/gallery/sventes/sventes-02.webp', id: 2 },
+  { src: '../../../../assets/gallery/sventes/sventes-03.webp', id: 3 },
+  { src: '../../../../assets/gallery/sventes/sventes-08.webp', id: 8 },
+  { src: '../../../../assets/gallery/sventes/sventes-11.webp', id: 11 },
+  { src: '../../../../assets/gallery/sventes/sventes-09.webp', id: 9 },
+  { src: '../../../../assets/gallery/sventes/sventes-06.webp', id: 6 },
+  { src: '../../../../assets/gallery/sventes/sventes-12.webp', id: 12 },
+  { src: '../../../../assets/gallery/sventes/sventes-10.webp', id: 10 },
+  { src: '../../../../assets/gallery/sventes/sventes-13.webp', id: 13 },
+  { src: '../../../../assets/gallery/sventes/sventes-14.webp', id: 14 },
+  { src: '../../../../assets/gallery/sventes/sventes-04.webp', id: 4 },
+  { src: '../../../../assets/gallery/sventes/sventes-07.webp', id: 7 },
+];
+
+export const Projektai = [
+  { src: '../../../../assets/gallery/projektai/projektai-01.webp', id: 1 },
+  { src: '../../../../assets/gallery/projektai/projektai-02.webp', id: 2 },
+  { src: '../../../../assets/gallery/projektai/projektai-07.webp', id: 7 },
+  { src: '../../../../assets/gallery/projektai/projektai-03.webp', id: 3 },
+  { src: '../../../../assets/gallery/projektai/projektai-04.webp', id: 4 },
+  { src: '../../../../assets/gallery/projektai/projektai-05.webp', id: 5 },
+  { src: '../../../../assets/gallery/projektai/projektai-06.webp', id: 6 },
+];

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { CustomerDetails } from '../interfaces/customerDetails';
+import { CustomerDetails } from '../interfaces/customerDetails.interface';
 
 @Injectable({
   providedIn: 'root',

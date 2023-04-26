@@ -2,17 +2,23 @@
 @use "../../../styles/base/fonts";
 @use "../../../styles/modules/burger-menu";
 
-ul {
-  list-style-type: none;
-}
-
 .container-fluid {
   background-color: global.$primary;
 }
+
 .logo-button-div {
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.logo {
+  width: 85px;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .navbar-list {
@@ -21,50 +27,13 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
 .navbar-list li {
-  margin: 0.5em;
-}
-.arrow {
-  margin-left: 2px;
-  margin-bottom: 1px;
-  border: solid fonts.$text-color;
-  border-width: 0 1px 1px 0;
-  display: inline-block;
-  padding: 2.5px;
-  transition: 0.3s ease-in-out;
-}
-
-.up {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-.dropdown-toggle::after {
-  display: none;
+  margin: 0.3em;
 }
 
 .portfolio-link {
   cursor: pointer;
-}
-
-.dropdown-menu.show {
-  background-color: global.$primary;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 1em;
-
-  a {
-    background-color: transparent;
-    padding: 0;
-  }
-  a:not(:first-child) {
-    padding-top: 0.6em;
-  }
 }
 
 @media (max-width: 769px) {
@@ -76,7 +45,8 @@ ul {
     z-index: 10;
   }
   .navbar-list {
-    padding-bottom: 1em;
+    padding-bottom: 0.6em;
+    padding-left: 0;
   }
 }
 
@@ -86,15 +56,15 @@ ul {
     justify-content: center;
   }
 
-  .logo-button-div,
-  .logo {
+  .logo-button-div {
+    padding: 7px 0;
     justify-content: center;
   }
 
   .navbar-list {
-    margin-top: 1em;
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
 
     li {
       margin: 0 1em;

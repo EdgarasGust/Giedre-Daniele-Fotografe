@@ -1,32 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
-import { Categories } from 'src/app/interfaces/categories';
+import { ViewportScroller } from '@angular/common';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent {
   isMenuCollapsed = false;
-  isSecondaryMenuCollapsed = true;
-  mobileContainer = false;
-  vestuves = Categories.vestuves;
-  ivairios = Categories.ivairios;
-  obsSubscription: Subscription;
 
-  constructor(public breakpointObserver: BreakpointObserver) {}
-  ngOnInit() {
-    this.obsSubscription = this.breakpointObserver
-      .observe(['(min-width:769px)'])
-      .subscribe((state: BreakpointState) => {
-        state.matches
-          ? (this.mobileContainer = false)
-          : (this.mobileContainer = true);
-      });
-  }
-  ngOnDestroy(): void {
-    this.obsSubscription.unsubscribe();
+  constructor(private router: Router) {}
+
+  goToComments() {
+    this.router.navigate(['/'], { fragment: 'atsiliepimai' });
   }
 }

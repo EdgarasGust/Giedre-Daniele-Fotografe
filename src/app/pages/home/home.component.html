@@ -1,10 +1,24 @@
 <div class="container">
   <div class="image-row-div">
     <div class="image-div" *ngFor="let image of images">
-      <img [src]="image.image" alt="" width="350" height="520" />
-      <div class="image-text">
-        <h5 class="m-0">{{ image.imageName }}</h5>
-      </div>
+      <a routerLink="/portfolio">
+        <img [src]="image.image" alt="" width="350" height="520" />
+        <div class="image-text">
+          <h5 class="m-0">{{ image.imageName }}</h5>
+        </div>
+      </a>
     </div>
   </div>
+</div>
+<app-comments id="atsiliepimai"></app-comments>
+
+<app-comments-form
+  (close)="formHidden = true"
+  *ngIf="!formHidden"
+></app-comments-form>
+
+<div class="text-center mt-3" *ngIf="formHidden">
+  <button mat-raised-button (click)="formHidden = false">
+    Palikti atsiliepimą
+  </button>
 </div>

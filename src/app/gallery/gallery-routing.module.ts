@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { GalleryComponent } from './gallery.component';
 import { GalleryDetailsComponent } from './pages/gallery-details/gallery-details.component';
-import { PhotosComponent } from './pages/photos/photos.component';
+import { GalleryImagesComponent } from './pages/gallery-images/gallery-images.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'name/:name',
-    component: PhotosComponent,
+    component: GalleryImagesComponent,
   },
   {
     path: 'name/:name/id/:id',

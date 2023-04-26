@@ -5,10 +5,9 @@
         <div class="logo">
           <img
             class="logo-image"
-            src="assets/logo/logo.JPG"
+            src="assets/logo/logo-main.webp"
             alt="logo"
-            width="50"
-            height="70"
+            class="img-fluid"
           />
         </div>
         <div>
@@ -36,6 +35,7 @@
               >PRADŽIA</a
             >
           </li>
+
           <li class="underline">
             <a
               routerLink="/apie"
@@ -45,80 +45,25 @@
             >
           </li>
 
-          <li
-            class="underline"
-            #myDrop="ngbDropdown"
-            ngbDropdown
-            *ngIf="!mobileContainer"
-          >
+          <li class="underline">
             <a
               class="portfolio-link"
               routerLinkActive="link-active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              ngbDropdownToggle
+              routerLink="/portfolio"
+              (click)="isMenuCollapsed = false"
             >
               PORTFOLIO
-              <i [ngClass]="myDrop.isOpen() ? 'arrow down' : 'arrow up'"></i>
             </a>
-            <div ngbDropdownMenu>
-              <div>
-                <a
-                  class="underline"
-                  ngbDropdownItem
-                  [routerLink]="['/portfolio', vestuves]"
-                  >Vestuvės</a
-                >
-                <a
-                  class="underline"
-                  ngbDropdownItem
-                  [routerLink]="['/portfolio', ivairios]"
-                  >Įvairios</a
-                >
-              </div>
-            </div>
           </li>
-
-          <!-- Mobile container -->
-
-          <li class="nav-item" *ngIf="mobileContainer">
+          <li class="underline">
             <a
-              class="nav-link"
-              routerLink="/"
+              class="portfolio-link"
               routerLinkActive="link-active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              role="button"
-              (click)="collapse.toggle()"
-              [attr.aria-expanded]="isSecondaryMenuCollapsed"
-              aria-controls="collapseExample"
+              (click)="goToComments()"
+              (click)="isMenuCollapsed = false"
             >
-              PORTFOLIO
-              <i
-                [ngClass]="
-                  !isSecondaryMenuCollapsed ? 'arrow up' : 'arrow down'
-                "
-              ></i>
+              ATSILIEPIMAI
             </a>
-            <div
-              #collapse="ngbCollapse"
-              [(ngbCollapse)]="isSecondaryMenuCollapsed"
-            >
-              <div class="navbar-nav d-flex flex-column text-center">
-                <a
-                  class="nav-link"
-                  [routerLink]="['/portfolio', vestuves]"
-                  (click)="isMenuCollapsed = false"
-                  (click)="collapse.toggle()"
-                  >Vestuvės</a
-                >
-                <a
-                  class="nav-link"
-                  [routerLink]="['/portfolio', ivairios]"
-                  (click)="isMenuCollapsed = false"
-                  (click)="collapse.toggle()"
-                  >Įvairios</a
-                >
-              </div>
-            </div>
           </li>
 
           <li class="underline">
@@ -135,4 +80,8 @@
     </div>
   </div>
 </nav>
-<div *ngIf="isMenuCollapsed" class="backdrop"></div>
+<div
+  *ngIf="isMenuCollapsed"
+  class="backdrop"
+  (click)="isMenuCollapsed = false"
+></div>

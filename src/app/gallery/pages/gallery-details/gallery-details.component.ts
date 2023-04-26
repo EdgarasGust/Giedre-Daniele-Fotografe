@@ -6,6 +6,7 @@ import Swiper from 'swiper';
 
 import { GalleryService } from '../../services/gallery.service';
 import { Image } from '../../interfaces/image.interface';
+import { Navigation } from 'swiper';
 
 @Component({
   selector: 'app-gallery-details',

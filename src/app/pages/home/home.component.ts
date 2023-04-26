@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
-import { homeImages } from '../../interfaces/home-page-images';
-
-import Swiper, { Navigation, Pagination } from 'swiper';
+import { register } from 'swiper/element/bundle';
+import { HomePageImages, homeImages } from '../../interfaces/home-page-images';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +8,10 @@ import Swiper, { Navigation, Pagination } from 'swiper';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  images = homeImages;
+  images: HomePageImages[] = homeImages;
+  formHidden: boolean = true;
 
   ngOnInit() {
-    const swiper = new Swiper('.swiper', {
-      modules: [Navigation, Pagination],
-      speed: 500,
-      spaceBetween: 100,
-      navigation: {
-        nextEl: 'swiper-button-next',
-        prevEl: 'swiper-button-next',
-      },
-    });
+    register();
   }
 }

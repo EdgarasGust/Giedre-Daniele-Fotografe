@@ -15,7 +15,9 @@ import {
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HammerModule } from '../../node_modules/@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
+
+import { MatIconModule } from '@angular/material/icon';
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -23,6 +25,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { CommentsComponent } from './pages/comments/comments.component';
+import { CommentsFormComponent } from './pages/comments/comments-form/comments-form.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,9 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
     ContactsComponent,
     HomeComponent,
     ThankYouComponent,
+    CommentsComponent,
+    CommentsFormComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,8 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    HammerModule,
+    MatCardModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,10 +7,13 @@ import { Subject } from 'rxjs';
   styleUrls: ['./thank-you.component.scss'],
 })
 export class ThankYouComponent {
+  @Input() name: string = '';
   @Input() message: string = '';
   @Output() close = new Subject<boolean>();
 
   onClose() {
     this.close.next(false);
+    this.name = '';
+    this.message = '';
   }
 }
