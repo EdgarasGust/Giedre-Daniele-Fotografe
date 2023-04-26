@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="custom-text">{{ objectName }}</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let col of images; let i = index">
+      <div *ngFor="let image of col; trackBy: trackByIndex">
+        <a [routerLink]="['id', image.id]"> <img [src]="image.src" alt="" /></a>
+      </div>
+    </div>
+  </div>
+</div>

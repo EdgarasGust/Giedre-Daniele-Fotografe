@@ -1,0 +1,25 @@
+<div class="comments-container">
+  <h2 class="text-center">Atsiliepimai</h2>
+  <div class="swiper" *ngIf="comments; else loading">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide"
+        *ngFor="let comment of comments; trackBy: trackById"
+      >
+        <div class="card-container">
+          <div class="card-title">
+            <p>{{ comment.name }}</p>
+          </div>
+          <hr />
+          <div class="card-content">
+            <p>{{ comment.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <mat-spinner class="mx-auto" color="primary" [diameter]="40"></mat-spinner>
+    <p class="text-center mt-3">...Loading comments</p>
+  </ng-template>
+</div>

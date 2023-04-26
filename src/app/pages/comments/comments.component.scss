@@ -1,0 +1,43 @@
+@use "../../../styles/base/global";
+
+.swiper {
+  width: 95%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.swiper-slide {
+  align-self: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: global.$primary;
+  border-radius: 10px;
+  box-shadow: 5px 5px 12px lightgrey;
+}
+
+.swiper-wrapper {
+  padding-bottom: 1em;
+}
+
+.comments-container {
+  margin-top: 3em;
+}
+
+.card-container {
+  padding: 1em;
+  min-height: 300px;
+  // min-width: 300px;
+}
+.card-content {
+  text-align: justify;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 769px) {
+  .swiper {
+    width: 100%;
+  }
+}

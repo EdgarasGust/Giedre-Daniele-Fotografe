@@ -1,0 +1,17 @@
+.container {
+  max-width: 600px;
+}
+
+.ng-pristine,
+.ng-valid,
+.ng-invalid {
+  box-shadow: none;
+}
+
+.error-message {
+  font-size: 13px;
+  color: red;
+}
+.error-border {
+  border: 1px solid red;
+}

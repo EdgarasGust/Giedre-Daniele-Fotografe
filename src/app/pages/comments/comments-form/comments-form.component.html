@@ -1,0 +1,75 @@
+<div class="container">
+  <form class="contact-form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="mt-3">
+      <label for="name" class="form-label">Vardas*</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'error-border':
+            commentForm.controls['name'].touched &&
+            commentForm.controls['name'].invalid
+        }"
+        minlength="2"
+        formControlName="name"
+      />
+      <span
+        class="error-message"
+        *ngIf="
+          commentForm.controls['name'].touched &&
+          commentForm.controls['name'].invalid
+        "
+        >Įrasykite savo vardą</span
+      >
+    </div>
+    <div class="mt-3">
+      <label for="message" class="form-label">Žinutė*</label>
+      <textarea
+        name="message"
+        class="form-control"
+        [ngClass]="{
+          'error-border':
+            commentForm.controls['comment'].touched &&
+            commentForm.controls['comment'].invalid
+        }"
+        formControlName="comment"
+        id="message"
+        minlength="5"
+        cols="30"
+        rows="4"
+      ></textarea>
+      <span
+        class="error-message"
+        *ngIf="
+          commentForm.controls['comment'].touched &&
+          commentForm.controls['comment'].invalid
+        "
+        >Įrasykite klausimą</span
+      >
+    </div>
+
+    <mat-spinner
+      class="mx-auto"
+      color="warn"
+      *ngIf="isLoading"
+      [diameter]="40"
+    ></mat-spinner>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="my-4 form-control"
+      type="submit"
+      [disabled]="!commentForm.valid"
+    >
+      Siųsti
+    </button>
+  </form>
+</div>
+
+<app-thank-you
+  [name]="name"
+  [message]="message"
+  (close)="onThankYouComponentClose()"
+  *ngIf="formSubmitted"
+></app-thank-you>
