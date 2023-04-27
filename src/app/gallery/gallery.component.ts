@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Image } from './interfaces/image.interface';
-import { PortfolioImages } from './interfaces/imageCategory';
+import { PortfolioImages } from './interfaces/portfolioCategories';
 
 @Component({
   selector: 'app-gallery',

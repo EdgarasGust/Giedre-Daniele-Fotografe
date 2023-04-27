@@ -28,8 +28,6 @@ export class GalleryImagesComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.params.subscribe((params: Params) => {
       this.objectName = params['name'];
       const imageArray = this.galService.getImages(params['name']);
-
-      // const imageArray = this.galService.findArrayByName(params['name']);
       this.spliceInToChunks(imageArray);
     });
   }

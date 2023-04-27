@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-import { HomePageImages, homeImages } from '../../interfaces/home-page-images';
+import {
+  HomePageImages,
+  homeImages,
+} from '../../interfaces/home-page-images.interface';
 
 @Component({
   selector: 'app-home',

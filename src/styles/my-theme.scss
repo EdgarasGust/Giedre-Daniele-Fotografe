@@ -11,8 +11,8 @@ $my-typography: mat.define-typography-config(
   $headline-5: mat.define-typography-level(44px, 44px, 300),
   $headline-6: mat.define-typography-level(34px, 34px, 300),
   $subtitle-1: mat.define-typography-level(24px, 24px, 300),
-  $body-2: mat.define-typography-level(16px, 20px, 300),
-  $body-1: mat.define-typography-level(14px, 20px, 300),
+  $body-2: mat.define-typography-level(16px, 20px, 400),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
   $button: mat.define-typography-level(16px, 20px, 300, $letter-spacing: 1.25px),
 );
 

@@ -36,6 +36,43 @@ ul {
   cursor: pointer;
 }
 
+.dropdown-toggle::after {
+  display: none;
+}
+
+.arrow {
+  margin-left: 7px;
+  margin-bottom: 1px;
+  border: solid fonts.$text-color;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  cursor: pointer;
+  padding: 2.5px;
+
+  transition: 0.3s ease-in-out;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.mobile-ul_row {
+  display: flex;
+  padding-left: 24px;
+}
+
+.dropdown-links-dekstop {
+  background-color: global.$primary;
+  cursor: pointer;
+  border: none;
+}
+
 @media (max-width: 769px) {
   .navbar-position {
     position: absolute;

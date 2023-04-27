@@ -32,6 +32,7 @@
               routerLinkActive="link-active"
               [routerLinkActiveOptions]="{ exact: true }"
               (click)="isMenuCollapsed = false"
+              (click)="isSecondaryMenuCollapsed = true"
               >PRADŽIA</a
             >
           </li>
@@ -41,11 +42,17 @@
               routerLink="/apie"
               routerLinkActive="link-active"
               (click)="isMenuCollapsed = false"
+              (click)="isSecondaryMenuCollapsed = true"
               >APIE MANE</a
             >
           </li>
 
-          <li class="underline">
+          <li
+            class="underline"
+            #myDrop="ngbDropdown"
+            ngbDropdown
+            *ngIf="!mobileContainer"
+          >
             <a
               class="portfolio-link"
               routerLinkActive="link-active"
@@ -54,13 +61,127 @@
             >
               PORTFOLIO
             </a>
+            <span ngbDropdownToggle>
+              <i [ngClass]="myDrop.isOpen() ? 'arrow up' : 'arrow down'"></i>
+            </span>
+            <ul ngbDropdownMenu class="dropdown-links-dekstop">
+              <li>
+                <a
+                  ngbDropdownItem
+                  [routerLink]="['portfolio', 'name', Categories.ASMENINES]"
+                  >Asmeninė fotosesija</a
+                >
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  [routerLink]="['portfolio', 'name', Categories.IVAIZDZIO]"
+                  >Įvaizdžio fotosesija</a
+                >
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  [routerLink]="['portfolio', 'name', Categories.SVENTES]"
+                  >Šventės</a
+                >
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  [routerLink]="['portfolio', 'name', Categories.RENGINIAI]"
+                  >Renginiai</a
+                >
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  [routerLink]="['portfolio', 'name', Categories.PROJEKTAI]"
+                  >Projektai</a
+                >
+              </li>
+            </ul>
           </li>
+
+          <!-- Mobile container -->
+
+          <li class="nav-item" *ngIf="mobileContainer">
+            <ul class="mobile-ul_row">
+              <li>
+                <a
+                  class="nav-link text-center"
+                  routerLink="/portfolio"
+                  routerLinkActive="link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="isMenuCollapsed = false"
+                  (click)="isSecondaryMenuCollapsed = true"
+                >
+                  PORTFOLIO
+                </a>
+              </li>
+              <li>
+                <i
+                  [attr.aria-expanded]="isSecondaryMenuCollapsed"
+                  aria-controls="collapseExample"
+                  role="button"
+                  (click)="collapse.toggle()"
+                  [ngClass]="
+                    !isSecondaryMenuCollapsed ? 'arrow up' : 'arrow down'
+                  "
+                ></i>
+              </li>
+            </ul>
+            <div
+              #collapse="ngbCollapse"
+              [(ngbCollapse)]="isSecondaryMenuCollapsed"
+            >
+              <div class="navbar-nav d-flex flex-column text-center">
+                <a
+                  class="nav-link"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  [routerLink]="['portfolio', 'name', Categories.ASMENINES]"
+                  >Asmeninė fotosesija</a
+                >
+                <a
+                  class="nav-link"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  [routerLink]="['portfolio', 'name', Categories.IVAIZDZIO]"
+                  >Įvaizdžio fotosesija</a
+                >
+                <a
+                  class="nav-link"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  [routerLink]="['portfolio', 'name', Categories.SVENTES]"
+                  >Šventės</a
+                >
+                <a
+                  class="nav-link"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  [routerLink]="['portfolio', 'name', Categories.RENGINIAI]"
+                  >Renginiai</a
+                >
+                <a
+                  class="nav-link"
+                  (click)="isMenuCollapsed = false"
+                  (click)="collapse.toggle()"
+                  [routerLink]="['portfolio', 'name', Categories.PROJEKTAI]"
+                  >Projektai</a
+                >
+              </div>
+            </div>
+          </li>
+
           <li class="underline">
             <a
               class="portfolio-link"
               routerLinkActive="link-active"
               (click)="goToComments()"
               (click)="isMenuCollapsed = false"
+              (click)="isSecondaryMenuCollapsed = true"
             >
               ATSILIEPIMAI
             </a>
@@ -71,6 +192,7 @@
               routerLink="/kontaktai"
               routerLinkActive="link-active"
               (click)="isMenuCollapsed = false"
+              (click)="isSecondaryMenuCollapsed = true"
             >
               KONTAKTAI</a
             >

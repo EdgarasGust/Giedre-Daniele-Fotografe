@@ -1,9 +1,11 @@
 @use "../../../styles/base/global";
 
-.swiper {
+.swiper-one {
+  margin: 0 auto;
   width: 95%;
   height: 100%;
   background-color: transparent;
+  overflow: hidden;
 }
 
 .swiper-slide {
@@ -29,15 +31,15 @@
 .card-container {
   padding: 1em;
   min-height: 300px;
-  // min-width: 300px;
 }
+
 .card-content {
   text-align: justify;
   font-size: 0.9rem;
 }
 
 @media (min-width: 769px) {
-  .swiper {
+  .swiper-one {
     width: 100%;
   }
 }

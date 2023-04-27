@@ -6,7 +6,6 @@ import Swiper from 'swiper';
 
 import { GalleryService } from '../../services/gallery.service';
 import { Image } from '../../interfaces/image.interface';
-import { Navigation } from 'swiper';
 
 @Component({
   selector: 'app-gallery-details',
@@ -15,9 +14,9 @@ import { Navigation } from 'swiper';
   encapsulation: ViewEncapsulation.None,
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
-  paramsSubscription: Subscription;
   imageIndex: number;
   imagesArray: Image[];
+  paramsSubscription: Subscription;
 
   constructor(
     private galleryService: GalleryService,

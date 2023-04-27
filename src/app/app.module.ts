@@ -16,7 +16,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-
 import { MatIconModule } from '@angular/material/icon';
 
 import { NavbarComponent } from './layout/navbar/navbar.component';

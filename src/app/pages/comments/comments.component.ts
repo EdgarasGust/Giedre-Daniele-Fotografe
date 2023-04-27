@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import Swiper from 'swiper';
 
 import { Comment } from 'src/app/interfaces/comments.interface';
@@ -8,6 +12,7 @@ import { CommentsService } from 'src/app/services/comments.service';
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentsComponent {
   comments: Comment[];
@@ -23,7 +28,7 @@ export class CommentsComponent {
   }
 
   swiperConfig() {
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.swiper-one', {
       slidesPerView: 1,
       autoHeight: true,
       spaceBetween: 20,
