@@ -47,6 +47,21 @@
         >Įrasykite klausimą</span
       >
     </div>
+    <div class="form-check mt-3">
+      <input
+        class="form-check-input"
+        required
+        formControlName="termsConditions"
+        type="checkbox"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        <a
+          href="../../../assets/terms/Giedrė Danielė Fotografė - Privatumo politika.pdf"
+          target="blank"
+          >Sutinku su Asmens duomenų tvarkymo taisyklėmis.</a
+        >
+      </label>
+    </div>
 
     <mat-spinner
       class="mx-auto"
@@ -57,12 +72,11 @@
 
     <button
       mat-raised-button
-      color="primary"
       class="my-4 form-control"
       type="submit"
       [disabled]="!commentForm.valid"
     >
-      Siųsti
+      Rašyti
     </button>
   </form>
 </div>

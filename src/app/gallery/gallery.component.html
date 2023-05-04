@@ -2,7 +2,7 @@
   <h2 class="text-center">Nuotraukų Galerija</h2>
   <div class="card-container" *ngFor="let image of portfolioImages">
     <a [routerLink]="['name', image.name]">
-      <img [src]="image.src" alt="" class="" />
+      <img [src]="image.src" alt="" />
       <div class="image-overlay">
         <p class="image-overlay-text m-0">{{ image.name }}</p>
       </div>

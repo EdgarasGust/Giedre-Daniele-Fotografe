@@ -25,6 +25,20 @@ export class GalleryService {
     return this.filteredImages.slice();
   }
 
+  spliceInToChunks(arr: Image[]) {
+    const count = Math.round(arr.length / 3);
+    const chunkArray = [];
+    while (arr.length > 0) {
+      const chunk = arr.splice(0, count);
+      const mappedChunk = chunk.map((img: Image) => ({
+        src: img.src,
+        id: img.id,
+      }));
+      chunkArray.push(mappedChunk);
+    }
+    return chunkArray;
+  }
+
   getImageIndex(name: string, id: number) {
     let imageIndex: number;
     const imageArray = this.getImages(name);

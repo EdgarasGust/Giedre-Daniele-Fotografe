@@ -2,7 +2,13 @@
   <div class="image-row-div">
     <div class="image-div" *ngFor="let image of images">
       <a routerLink="/portfolio">
-        <img [src]="image.image" alt="" width="350" height="520" />
+        <img
+          [src]="image.image"
+          alt=""
+          loading="lazy"
+          width="350"
+          height="520"
+        />
         <div class="image-text">
           <h5 class="m-0">{{ image.imageName }}</h5>
         </div>
@@ -10,6 +16,8 @@
     </div>
   </div>
 </div>
+
+<!-- fragment -->
 <app-comments id="atsiliepimai"></app-comments>
 
 <app-comments-form
@@ -17,8 +25,8 @@
   *ngIf="!formHidden"
 ></app-comments-form>
 
-<div class="text-center mt-3" *ngIf="formHidden">
-  <button mat-raised-button (click)="formHidden = false">
-    Palikti atsiliepimą
+<div class="text-center mt-3">
+  <button mat-raised-button (click)="formHidden = !formHidden">
+    {{ formHidden ? "Palikti atsiliepimą" : "Uždaryti formą" }}
   </button>
 </div>

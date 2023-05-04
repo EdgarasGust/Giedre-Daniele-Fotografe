@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
@@ -13,7 +9,6 @@ import {
   throwError,
 } from 'rxjs';
 import { Comment } from '../interfaces/comments.interface';
-import { Comments } from './temporaryCommentFile';
 
 @Injectable({
   providedIn: 'root',
@@ -23,36 +18,25 @@ export class CommentsService {
   private comment$ = new BehaviorSubject<Comment[]>([]);
   comments$: Observable<Comment[]> = this.comment$.asObservable();
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
   constructor(private http: HttpClient) {}
 
-  getCommentsTemp() {
-    return Comments;
-  }
-
   getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.apiServer + '/get_comments.php/').pipe(
+    return this.http.get<Comment[]>(this.apiServer + 'get_comments.php').pipe(
       tap((res: Comment[]) => {
-        this.comment$.next(res);
+        const reverseArray = res.reverse();
+        this.comment$.next(reverseArray);
       }),
       retry(3),
       catchError(this.handleError)
     );
   }
 
-  postComments(data: Comment): Observable<Comment> {
-    const json = JSON.stringify(data);
+  postComments(data: Comment) {
     return this.http
-      .post<Comment>(
-        this.apiServer + '/post_comments.php/',
-        json,
-        this.httpOptions
-      )
-      .pipe(catchError(this.handleError));
+      .post(this.apiServer + 'post_comments.php', data, {
+        responseType: 'text',
+      })
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

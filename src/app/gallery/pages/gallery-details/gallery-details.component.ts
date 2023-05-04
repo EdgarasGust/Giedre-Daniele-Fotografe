@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,6 @@ import { Image } from '../../interfaces/image.interface';
   selector: 'app-gallery-details',
   templateUrl: './gallery-details.component.html',
   styleUrls: ['./gallery-details.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
   imageIndex: number;
@@ -44,7 +43,6 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
     const swiper = new Swiper('.swiper', {
       slidesPerView: 1,
       autoHeight: true,
-      speed: 300,
       spaceBetween: 50,
       grabCursor: true,
       keyboard: true,

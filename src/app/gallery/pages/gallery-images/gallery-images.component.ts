@@ -12,12 +12,12 @@ import { GalleryService } from '../../services/gallery.service';
 })
 export class GalleryImagesComponent implements OnInit, OnDestroy {
   paramsSubscription: Subscription;
-  objectName: string;
+  galleryName: string;
   images: Image[][] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private galService: GalleryService
+    private galleryService: GalleryService
   ) {}
 
   ngOnInit() {
@@ -26,28 +26,14 @@ export class GalleryImagesComponent implements OnInit, OnDestroy {
 
   getImages() {
     this.paramsSubscription = this.route.params.subscribe((params: Params) => {
-      this.objectName = params['name'];
-      const imageArray = this.galService.getImages(params['name']);
-      this.spliceInToChunks(imageArray);
+      this.galleryName = params['name'];
+      const imageArray = this.galleryService.getImages(params['name']);
+      this.images = this.galleryService.spliceInToChunks(imageArray);
     });
   }
 
-  spliceInToChunks(arr: Image[]) {
-    const count = Math.round(arr.length / 3);
-    const chunkArray = [];
-    while (arr.length > 0) {
-      const chunk = arr.splice(0, count);
-      const mappedChunk = chunk.map((img: Image) => ({
-        src: img.src,
-        id: img.id,
-      }));
-      chunkArray.push(mappedChunk);
-    }
-    this.images = chunkArray;
-  }
-
-  trackByIndex(index: number, item: any) {
-    return item;
+  trackById(index: number, item: Image) {
+    return item.id;
   }
 
   ngOnDestroy(): void {

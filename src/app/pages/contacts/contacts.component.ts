@@ -17,7 +17,7 @@ export class ContactsComponent {
     name: ['', Validators.required],
     email: ['', { validators: [Validators.required, Validators.email] }],
     tel: [null],
-    message: ['', Validators.required],
+    question: ['', Validators.required],
     termsConditions: [false, Validators.pattern('true')],
   });
   constructor(
@@ -42,7 +42,8 @@ export class ContactsComponent {
       next: () => {
         this.formSubmitted = true;
         this.isLoading = false;
-        this.message = `Ačių ${this.contactForm.controls.name.value} už Jūsų laišką. Į Jūsų klausimus atsakysime, kaip galėdami greičiau!`;
+        this.message =
+          'Ačių už Jūsų laišką. Į Jūsų klausimus atsakysime, kaip galėdami greičiau!';
       },
       error: (err) => {
         this.formSubmitted = true;

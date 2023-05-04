@@ -9,12 +9,15 @@ import { CustomerDetails } from '../interfaces/customerDetails.interface';
   providedIn: 'root',
 })
 export class EmailApiService {
+  private api: string = 'https://giedredanielephotography.lt/api/mail.php';
+
   constructor(private http: HttpClient) {}
-  api = 'https://giedredanielefotografe.lt';
 
   sendMail(emailDetails: CustomerDetails) {
     return this.http
-      .post<CustomerDetails>(this.api, emailDetails)
+      .post(this.api, emailDetails, {
+        responseType: 'text',
+      })
       .pipe(catchError(this.handleError));
   }
 

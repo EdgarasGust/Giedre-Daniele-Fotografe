@@ -3,14 +3,13 @@ export interface HomePageImages {
   image: string;
 }
 
-export const homeImages: HomePageImages[] = [
+export const HomeImages: HomePageImages[] = [
   {
-    imageName: 'First image First image First image First image',
+    imageName: 'First image ',
     image: '../../../../assets/home-page-images/home-01.webp',
   },
   {
-    imageName:
-      'First image First image First image First image First image First image First image First image',
+    imageName: 'First image ',
     image: '../../../../assets/home-page-images/home-02.webp',
   },
   {

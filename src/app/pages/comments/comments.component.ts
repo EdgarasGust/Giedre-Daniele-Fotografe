@@ -1,9 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-} from '@angular/core';
-import Swiper from 'swiper';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Observable, takeUntil, Subject } from 'rxjs';
+import { Swiper } from 'swiper';
 
 import { Comment } from 'src/app/interfaces/comments.interface';
 import { CommentsService } from 'src/app/services/comments.service';
@@ -12,19 +9,45 @@ import { CommentsService } from 'src/app/services/comments.service';
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentsComponent {
-  comments: Comment[];
+  comments$: Observable<Comment[]> = this.commentService.comments$;
+  loadingComments: boolean;
+  destroy$ = new Subject<boolean>();
 
-  constructor(private commentService: CommentsService) {}
+  constructor(
+    private commentService: CommentsService,
+    private changeDetection: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.getComments();
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewChecked(): void {
     this.swiperConfig();
+  }
+
+  ngAfterViewInit(): void {
+    // Doesn`t work without timer
+    // this.swiperConfig();
+  }
+
+  getComments() {
+    this.loadingComments = true;
+    this.commentService
+      .getComments()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => {
+          this.changeDetection.markForCheck();
+          this.loadingComments = false;
+        },
+        error: (err) => {
+          console.error(err);
+          this.loadingComments = false;
+        },
+      });
   }
 
   swiperConfig() {
@@ -33,7 +56,6 @@ export class CommentsComponent {
       autoHeight: true,
       spaceBetween: 20,
       grabCursor: true,
-
       breakpoints: {
         769: {
           slidesPerView: 2,
@@ -54,11 +76,12 @@ export class CommentsComponent {
     });
   }
 
-  getComments() {
-    this.comments = this.commentService.getCommentsTemp();
+  trackById(index: number, comment: Comment) {
+    return comment.id;
   }
 
-  trackById(index: number, comment: any) {
-    return comment.id;
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }

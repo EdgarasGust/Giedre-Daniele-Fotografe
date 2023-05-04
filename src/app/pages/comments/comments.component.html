@@ -1,10 +1,11 @@
 <div class="comments-container">
   <h2 class="text-center">Atsiliepimai</h2>
-  <div class="swiper-one" *ngIf="comments; else loading">
+
+  <div class="swiper-one mt-5" *ngIf="!loadingComments; else loading">
     <div class="swiper-wrapper">
       <div
         class="swiper-slide"
-        *ngFor="let comment of comments; trackBy: trackById"
+        *ngFor="let comment of comments$ | async; trackBy: trackById"
       >
         <div class="card-container">
           <div class="card-title">

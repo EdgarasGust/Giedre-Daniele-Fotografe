@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
-import { Categories } from 'src/app/interfaces/categories.enum';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+
+import { Categories } from 'src/app/interfaces/categories.enum';
 
 @Component({
   selector: 'app-navbar',

@@ -34,6 +34,7 @@
           <label for="name" class="form-label">Vardas*</label>
           <input
             type="text"
+            id="name"
             class="form-control"
             [ngClass]="{
               'error-border':
@@ -55,6 +56,7 @@
         <div class="mt-3">
           <label for="email" class="form-label">El. paštas*</label>
           <input
+            id="email"
             type="email"
             class="form-control"
             [ngClass]="{
@@ -79,17 +81,17 @@
           <input type="number" class="form-control" formControlName="tel" />
         </div>
         <div class="mt-3">
-          <label for="message" class="form-label">Žinutė*</label>
+          <label for="question" class="form-label">Žinutė*</label>
           <textarea
-            name="message"
+            name="question"
             class="form-control"
             [ngClass]="{
               'error-border':
-                contactForm.controls['message'].touched &&
-                contactForm.controls['message'].invalid
+                contactForm.controls['question'].touched &&
+                contactForm.controls['question'].invalid
             }"
-            formControlName="message"
-            id="message"
+            formControlName="question"
+            id="question"
             minlength="5"
             cols="30"
             rows="4"
@@ -97,8 +99,8 @@
           <span
             class="error-message"
             *ngIf="
-              contactForm.controls['message'].touched &&
-              contactForm.controls['message'].invalid
+              contactForm.controls['question'].touched &&
+              contactForm.controls['question'].invalid
             "
             >Įrasykite klausimą</span
           >

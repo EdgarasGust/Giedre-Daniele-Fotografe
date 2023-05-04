@@ -1,6 +1,7 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnDestroy, Output } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+
 import { CommentsService } from 'src/app/services/comments.service';
 
 @Component({
@@ -8,17 +9,18 @@ import { CommentsService } from 'src/app/services/comments.service';
   templateUrl: './comments-form.component.html',
   styleUrls: ['./comments-form.component.scss'],
 })
-export class CommentsFormComponent {
+export class CommentsFormComponent implements OnDestroy {
+  private destroy$ = new Subject<boolean>();
   @Output() close = new Subject<boolean>();
   formSubmitted = false;
   isLoading = false;
   message = '';
   name = '';
-  commentSbs: Subscription;
 
   commentForm = this.fb.group({
     name: ['', Validators.required],
     comment: ['', Validators.required],
+    termsConditions: [false, Validators.pattern('true')],
   });
 
   constructor(
@@ -41,26 +43,31 @@ export class CommentsFormComponent {
 
   postComment() {
     this.isLoading = true;
-    this.commentService.postComments(this.commentForm.value).subscribe({
-      next: () => {
-        this.formSubmitted = true;
-        this.message = 'Ačiū už Jūsų paliktą atsiliepimą';
-        this.isLoading = false;
-        this.updateComments();
-      },
-      error: (err) => {
-        this.formSubmitted = true;
-        this.message =
-          'Tinklo klaida, bandykite dar karta. Atsiprašome už nepatogumus.';
-        console.error(err);
-        this.isLoading = false;
-      },
-    });
+    this.commentService
+      .postComments(this.commentForm.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => {
+          this.formSubmitted = true;
+          this.message = 'Ačiū už Jūsų paliktą atsiliepimą';
+          this.isLoading = false;
+          this.updateComments();
+        },
+        error: (err) => {
+          this.formSubmitted = true;
+          this.message =
+            'Tinklo klaida, bandykite dar kartą. Atsiprašome už nepatogumus.';
+          console.error(err);
+          this.isLoading = false;
+        },
+      });
   }
 
   updateComments() {
-    // this.commentSbs = this.commentService.getComments().subscribe();
-    console.log('updateComments called');
+    this.commentService
+      .getComments()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   onThankYouComponentClose() {
@@ -71,6 +78,7 @@ export class CommentsFormComponent {
   }
 
   ngOnDestroy(): void {
-    // this.commentSbs.unsubscribe();
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }
