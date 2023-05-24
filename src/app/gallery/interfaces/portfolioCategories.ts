@@ -12,7 +12,7 @@ export const PortfolioImages = [
     name: 'Šventės',
   },
   {
-    src: '../../../../assets/gallery/portfolio/projektai-03.webp',
+    src: '../../../../assets/gallery/portfolio/renginiai-01.webp',
     name: 'Renginiai',
   },
   {

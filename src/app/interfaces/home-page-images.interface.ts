@@ -1,43 +1,45 @@
 export interface HomePageImages {
-  imageName: string;
+  imageDescription: string;
   image: string;
 }
 
 export const HomeImages: HomePageImages[] = [
   {
-    imageName: 'First image ',
+    imageDescription: 'Vaikščiokite taip, tarsi kojomis bučiuotumėte žemę',
     image: '../../../../assets/home-page-images/home-01.webp',
   },
   {
-    imageName: 'First image ',
+    imageDescription: 'Grožis nėra randamas veide, grožis yra širdies šviesa',
     image: '../../../../assets/home-page-images/home-02.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription:
+      'Mes matome pasaulį ne tokį, koks jis yra, o tokį, kokie esame patys',
     image: '../../../../assets/home-page-images/home-03.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription:
+      'Gyvenkite laisvi ir iš visos širdies mėgaukitės kiekviena akimirka',
     image: '../../../../assets/home-page-images/home-04.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription: 'Įsimylėti save yra pirmoji laimės paslaptis',
     image: '../../../../assets/home-page-images/home-05.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription: 'Šią minutę Jūs kuriate kitą savo gyvenimo akimirką',
     image: '../../../../assets/home-page-images/home-06.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription: 'Į laimę veda atviras protas',
     image: '../../../../assets/home-page-images/home-07.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription: 'Darykite tai, ką iš tikrųjų norite daryti',
     image: '../../../../assets/home-page-images/home-08.webp',
   },
   {
-    imageName: 'First image',
+    imageDescription: 'Šypsena nieko nekainuoja',
     image: '../../../../assets/home-page-images/home-09.webp',
   },
 ];

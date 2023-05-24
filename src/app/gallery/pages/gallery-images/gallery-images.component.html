@@ -4,7 +4,7 @@
     <div class="col-md-4" *ngFor="let col of images; let i = index">
       <div *ngFor="let image of col; trackBy: trackById">
         <a [routerLink]="['id', image.id]">
-          <img [src]="image.src" alt="" loading="lazy" />
+          <img [src]="image.src" alt="{{ image.alt }}" loading="lazy" />
         </a>
       </div>
     </div>

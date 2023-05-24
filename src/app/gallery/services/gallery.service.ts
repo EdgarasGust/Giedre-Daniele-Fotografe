@@ -18,7 +18,7 @@ export class GalleryService {
     } else if (imageName === Categories.SVENTES) {
       this.filteredImages = galleryImages.Sventes;
     } else if (imageName === Categories.RENGINIAI) {
-      this.filteredImages = galleryImages.Ivaizdis;
+      this.filteredImages = galleryImages.Renginiai;
     } else if (imageName === Categories.PROJEKTAI) {
       this.filteredImages = galleryImages.Projektai;
     }

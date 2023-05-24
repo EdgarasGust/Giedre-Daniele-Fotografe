@@ -1,17 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 
-import { PhotosComponent } from './gallery-images.component';
+import { GalleryImagesComponent } from './gallery-images.component';
 
-describe('WeddingsComponent', () => {
-  let component: PhotosComponent;
-  let fixture: ComponentFixture<PhotosComponent>;
+describe('GalleryImagesComponent', () => {
+  let component: GalleryImagesComponent;
+  let fixture: ComponentFixture<GalleryImagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PhotosComponent],
+      declarations: [GalleryImagesComponent],
+      imports: [RouterModule.forRoot([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PhotosComponent);
+    fixture = TestBed.createComponent(GalleryImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

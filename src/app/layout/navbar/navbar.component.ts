@@ -36,8 +36,18 @@ export class NavbarComponent {
       });
   }
 
-  goToComments() {
-    this.router.navigate(['/'], { fragment: 'atsiliepimai' });
+  goToComments(fragment: string) {
+    const urlTree = this.router.parseUrl(this.router.url);
+    if (urlTree.fragment === fragment) {
+      // The fragment is already in the URL, so scroll to it
+      const element = document.getElementById(fragment);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to the root route with the fragment
+      this.router.navigate(['/'], { fragment: fragment });
+    }
   }
 
   ngOnDestroy(): void {

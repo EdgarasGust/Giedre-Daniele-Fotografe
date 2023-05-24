@@ -1,16 +1,30 @@
 <div class="container">
   <div class="image-row-div">
-    <div class="image-div" *ngFor="let image of images">
-      <a routerLink="/portfolio">
+    <div class="image-div" *ngFor="let image of images; let i = index">
+      <a routerLink="/portfolio" *ngIf="i < 5">
         <img
+          fetchpriority="high"
           [src]="image.image"
-          alt=""
-          loading="lazy"
+          alt="{{ image.imageDescription }}"
+          class="image"
           width="350"
           height="520"
         />
         <div class="image-text">
-          <h5 class="m-0">{{ image.imageName }}</h5>
+          <h5 class="m-0">{{ image.imageDescription }}</h5>
+        </div>
+      </a>
+      <a routerLink="/portfolio" *ngIf="i >= 5">
+        <img
+          [src]="image.image"
+          alt="{{ image.imageDescription }}"
+          class="image"
+          width="350"
+          height="520"
+          loading="lazy"
+        />
+        <div class="image-text">
+          <h5 class="m-0">{{ image.imageDescription }}</h5>
         </div>
       </a>
     </div>
@@ -26,7 +40,7 @@
 ></app-comments-form>
 
 <div class="text-center mt-3">
-  <button mat-raised-button (click)="formHidden = !formHidden">
+  <button mat-raised-button id="button" (click)="formHidden = !formHidden">
     {{ formHidden ? "Palikti atsiliepimą" : "Uždaryti formą" }}
   </button>
 </div>

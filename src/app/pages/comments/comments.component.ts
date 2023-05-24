@@ -28,10 +28,10 @@ export class CommentsComponent {
     this.swiperConfig();
   }
 
-  ngAfterViewInit(): void {
-    // Doesn`t work without timer
-    // this.swiperConfig();
-  }
+  // ngAfterViewInit(): void {
+  // Doesn`t work without timer
+  // this.swiperConfig();
+  // }
 
   getComments() {
     this.loadingComments = true;
