@@ -21,7 +21,7 @@ export class GalleryComponent {
       {
         name: 'keyword',
         content:
-          'Asmenine, Ivaizdzio, Sventes, Renginiai, Projektai - fotosesijos ',
+          'Asmenine, Ivaizdzio, Sventes, Renginiai, Projektai - fotosesijos',
       },
     ]);
   }

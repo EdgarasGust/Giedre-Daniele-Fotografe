@@ -19,11 +19,4 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     expect(app).toBeTruthy();
   });
-
-  // it(`should have title 'Giedre Daniele Photography'`, () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-  //   fixture.detectChanges();
-  //   expect(app.title).toEqual('Giedre Daniele Photography');
-  // });
 });

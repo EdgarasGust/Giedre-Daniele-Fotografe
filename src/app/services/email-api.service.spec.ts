@@ -3,11 +3,10 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { EmailApiService } from './email-api.service';
 import { CustomerDetails } from '../interfaces/customerDetails.interface';
-import { catchError, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 
 describe('EmailApiService', () => {
   let service: EmailApiService;
@@ -45,79 +44,50 @@ describe('EmailApiService', () => {
 
     request.flush('Email sent successfully');
   });
-  /////////////////
-  // it('should handle HttpErrorResponse with status code 0', () => {
-  //   const errorResponse: HttpErrorResponse = {
-  //     status: 0,
-  //     error: new ErrorEvent('network error'),
-  //   };
 
-  //   const throwErrorSpy = spyOn(throwError(), 'subscribe');
+  it('should log an error message when status is 0', () => {
+    const consoleErrorSpy = spyOn(console, 'error');
+    const errorResponse: HttpErrorResponse = new HttpErrorResponse({
+      error: 'network error',
+      status: 0,
+    });
 
-  //   const result = service.handleError(errorResponse);
+    service.handleError(errorResponse);
 
-  //   expect(console.error).toHaveBeenCalledWith(
-  //     'An error occurred:',
-  //     errorResponse.error
-  //   );
-  //   expect(throwErrorSpy).toHaveBeenCalled();
-  // });
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'An error occurred:',
+      'network error'
+    );
+  });
 
-  // it('should handle HttpErrorResponse with status code > 0', () => {
-  //   const errorResponse: HttpErrorResponse = {
-  //     status: 500,
-  //     error: { message: 'Internal Server Error' },
-  //   };
+  it('should log an error message when status is 500', () => {
+    const consoleErrorSpy = spyOn(console, 'error');
+    const errorResponse: HttpErrorResponse = new HttpErrorResponse({
+      error: 'some error',
+      status: 500,
+    });
 
-  //   const throwErrorSpy = spyOn(throwError(), 'subscribe');
+    service.handleError(errorResponse);
 
-  //   const result = service.handleError(errorResponse);
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'Backend returned code 500, body was: ',
+      'some error'
+    );
+  });
 
-  //   expect(console.error).toHaveBeenCalledWith(`Backend returned code ${errorResponse.status}, body was: `, errorResponse.error);
-  //   expect(throwErrorSpy).toHaveBeenCalled();
-  // });
+  it('should return a throwError observable', () => {
+    const errorResponse: HttpErrorResponse = new HttpErrorResponse({
+      error: 'some error',
+      status: 500,
+    });
+
+    spyOn(service, 'handleError').and.callThrough();
+
+    service.handleError(errorResponse).subscribe({
+      error: (error) =>
+        expect(error).toEqual(
+          new Error('Something bad happened; please try again later.')
+        ),
+    });
+  });
 });
-////////////////////////
-// import { HttpErrorResponse } from '@angular/common/http';
-// import { TestBed } from '@angular/core/testing';
-// import { EmailApiService } from './email-api.service';
-// import { throwError } from 'rxjs';
-
-// describe('EmailApiService', () => {
-//   let service: EmailApiService;
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [EmailApiService],
-//     });
-//     service = TestBed.inject(EmailApiService);
-//   });
-
-//   it('should handle HttpErrorResponse with status code 0', () => {
-//     const errorResponse: HttpErrorResponse = {
-//       status: 0,
-//       error: new ErrorEvent('network error'),
-//     };
-
-//     const throwErrorSpy = spyOn(throwError(), 'subscribe');
-
-//     const result = service.handleError(errorResponse);
-
-//     expect(console.error).toHaveBeenCalledWith('An error occurred:', errorResponse.error);
-//     expect(throwErrorSpy).toHaveBeenCalled();
-//   });
-
-//   it('should handle HttpErrorResponse with status code > 0', () => {
-//     const errorResponse: HttpErrorResponse = {
-//       status: 500,
-//       error: { message: 'Internal Server Error' },
-//     };
-
-//     const throwErrorSpy = spyOn(throwError(), 'subscribe');
-
-//     const result = service.handleError(errorResponse);
-
-//     expect(console.error).toHaveBeenCalledWith(`Backend returned code ${errorResponse.status}, body was: `, errorResponse.error);
-//     expect(throwErrorSpy).toHaveBeenCalled();
-//   });
-// });

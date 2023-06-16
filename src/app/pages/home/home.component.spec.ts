@@ -6,7 +6,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home.component';
 import { CommentsComponent } from '../comments/comments.component';
 import { CommentsFormComponent } from '../comments/comments-form/comments-form.component';
-import { HomePageImages } from '../../interfaces/home-page-images.interface';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -39,7 +38,8 @@ describe('HomeComponent', () => {
     expect(
       component.images.every((img) => {
         return (
-          typeof img.imageName === 'string' && typeof img.image === 'string'
+          typeof img.imageDescription === 'string' &&
+          typeof img.image === 'string'
         );
       })
     ).toBeTrue();

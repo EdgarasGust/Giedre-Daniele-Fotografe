@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Observable, takeUntil, Subject } from 'rxjs';
 import { Swiper } from 'swiper';
 
@@ -12,12 +12,12 @@ import { CommentsService } from 'src/app/services/comments.service';
 })
 export class CommentsComponent {
   comments$: Observable<Comment[]> = this.commentService.comments$;
-  loadingComments: boolean;
+  errorMsg: string = '';
   destroy$ = new Subject<boolean>();
 
   constructor(
     private commentService: CommentsService,
-    private changeDetection: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -28,24 +28,14 @@ export class CommentsComponent {
     this.swiperConfig();
   }
 
-  // ngAfterViewInit(): void {
-  // Doesn`t work without timer
-  // this.swiperConfig();
-  // }
-
   getComments() {
-    this.loadingComments = true;
     this.commentService
       .getComments()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: () => {
-          this.changeDetection.markForCheck();
-          this.loadingComments = false;
-        },
         error: (err) => {
-          console.error(err);
-          this.loadingComments = false;
+          this.changeDetector.markForCheck();
+          this.errorMsg = `Įvyko klaida: ${err.message}`;
         },
       });
   }

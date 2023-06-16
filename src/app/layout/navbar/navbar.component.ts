@@ -27,6 +27,10 @@ export class NavbarComponent {
   }
 
   ngOnInit() {
+    this.breakpointObs();
+  }
+
+  breakpointObs() {
     this.obsSubscription = this.breakpointObserver
       .observe(['(max-width:769px)'])
       .subscribe((state: BreakpointState) => {

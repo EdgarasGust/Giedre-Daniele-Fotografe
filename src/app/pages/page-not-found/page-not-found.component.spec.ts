@@ -8,9 +8,8 @@ describe('PageNotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageNotFoundComponent ]
-    })
-    .compileComponents();
+      declarations: [PageNotFoundComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,10 @@ describe('PageNotFoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have h1 tag with text "404 Error"', () => {
+    const h1 = fixture.nativeElement.querySelector('#page-heading');
+    expect(h1.textContent).toBe('404 Error');
   });
 });

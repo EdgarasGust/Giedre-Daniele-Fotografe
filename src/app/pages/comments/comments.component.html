@@ -1,26 +1,41 @@
-<div class="comments-container">
-  <h2 class="text-center">Atsiliepimai</h2>
+<ng-container *ngIf="comments$ | async as comments">
+  <div class="comments-container">
+    <h2 class="text-center">Atsiliepimai</h2>
 
-  <div class="swiper-one mt-5" *ngIf="!loadingComments; else loading">
-    <div class="swiper-wrapper">
-      <div
-        class="swiper-slide"
-        *ngFor="let comment of comments$ | async; trackBy: trackById"
-      >
-        <div class="card-container">
-          <div class="card-title">
-            <p>{{ comment.name }}</p>
-          </div>
-          <hr />
-          <div class="card-content">
-            <p>{{ comment.comment }}</p>
+    <div class="swiper-one mt-5" *ngIf="comments.length > 0; else loading">
+      <div class="swiper-wrapper">
+        <div
+          class="swiper-slide"
+          *ngFor="let comment of comments$ | async; trackBy: trackById"
+        >
+          <div class="card-container">
+            <div class="card-title">
+              <p>{{ comment.name }}</p>
+            </div>
+            <hr />
+            <div class="card-content">
+              <p>{{ comment.comment }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #loading>
+      <div *ngIf="!errorMsg">
+        <mat-spinner
+          class="mx-auto"
+          color="primary"
+          [diameter]="40"
+        ></mat-spinner>
+        <p class="text-center mt-3">...Loading comments</p>
+      </div>
+    </ng-template>
+    <div
+      *ngIf="errorMsg && comments.length <= 0"
+      class="mx-auto alert alert-danger"
+      role="alert"
+    >
+      <p class="text-center">{{ errorMsg }}</p>
+    </div>
   </div>
-  <ng-template #loading>
-    <mat-spinner class="mx-auto" color="primary" [diameter]="40"></mat-spinner>
-    <p class="text-center mt-3">...Loading comments</p>
-  </ng-template>
-</div>
+</ng-container>

@@ -28,8 +28,6 @@ export class CommentsFormComponent implements OnDestroy {
     private commentService: CommentsService
   ) {}
 
-  ngOnInit(): void {}
-
   onSubmit() {
     if (this.commentForm.invalid) {
       this.commentForm.reset();
@@ -67,7 +65,11 @@ export class CommentsFormComponent implements OnDestroy {
     this.commentService
       .getComments()
       .pipe(takeUntil(this.destroy$))
-      .subscribe();
+      .subscribe({
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   onThankYouComponentClose() {

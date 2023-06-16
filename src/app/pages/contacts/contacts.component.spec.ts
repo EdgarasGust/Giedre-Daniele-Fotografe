@@ -22,7 +22,7 @@ describe('ContactsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  // let emailService = EmailApiService;
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -59,7 +59,6 @@ describe('ContactsComponent', () => {
     component.sendEmail();
     expect(component.isLoading).toBe(true);
 
-    // sendMail() method to return a successful response
     spyOn(emailService, 'sendMail').and.returnValue(
       of('Email sent successfully')
     );
@@ -73,7 +72,6 @@ describe('ContactsComponent', () => {
   });
 
   it('should set formSubmitted to true and isLoading to false on email send error', () => {
-    //emailService.sendMail() method to return an error response
     spyOn(emailService, 'sendMail').and.returnValue(
       throwError(() => new Error('error'))
     );
